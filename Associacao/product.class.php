@@ -1,4 +1,8 @@
 <?php
+#Um objeto possui a referẽncia a posição de memória do outro. 
+#A forma mais comum de implementar essa funcionalidade é tendo um objeto como atributo do outro, por exemplo:
+# PRODUTO possui FORNECEDOR
+
 
 class Product{
     public $description;
