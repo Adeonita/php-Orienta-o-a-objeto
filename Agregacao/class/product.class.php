@@ -3,20 +3,16 @@
 class Product{
     public $description;
     public $price;
-    public $amount; //Quantidade
     public $code;
-    public $fornecedor;
 
-    public function __construct($description, $price, $amount, $code, $fornecedor){
+    public function __construct($description, $price, $code){
         $this->description = $description;
         $this->price = $price;
-        $this->amount = $amount;
         $this->code = $code;
-        $this->fornecedor = $fornecedor;
     }
 
     public function printTag(){
-        print 'Code: ' . $this->code;
         print 'Description: '. $this->description;
+        print ' - Code: ' . $this->code;
     }
 }

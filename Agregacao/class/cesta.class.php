@@ -6,13 +6,14 @@ Para muitas instâncias utilize arrays como atributo da classe. */
 class Cesta{
     private $itens;
 
-   public function addItens(Produto $item){
+   public function addItens(Product $item){  //Adiciona a cesta um objeto do tipo PRODUCT
         $this->itens[] = $item;  //Itens é uma array que guarda itens do tipo Produto, e a cada chamada do método addItens há acumulação de item no array itens
     }
 
-    public function showLsit(){
+    public function showList(){
         foreach($this->itens as $item){
             $item->printTag();
+            print '<br>';
         }
     }
 
