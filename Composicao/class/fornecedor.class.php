@@ -1,4 +1,6 @@
 <?php
+#O objeto 'PAI' é responsável pela criação e destruição das suas partes. FORNECEDOR possui CONTATO
+#As instâncias não são independentes como na agregação, o TODO possui as PARTES 
 
 class Fornecedor{
 
