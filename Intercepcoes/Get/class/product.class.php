@@ -1,6 +1,7 @@
 <?php
     //O método __get() intercepta requisições, sempre que requisitada uma propriedade, automaticamente
     //Ela passará pelo método __get(), o mesmo recebe o nome da propriedade, podendo retorna-la ou não.
+    // __get($property); Recebendo a propriedade na chamada do objeto como parâmetro
 
     class Product{
 

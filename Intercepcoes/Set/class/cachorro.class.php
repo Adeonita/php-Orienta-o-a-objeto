@@ -1,5 +1,6 @@
 <?php
-
+    //Incercepta as atribuições passadas na utilização do objeto
+    //__set($property, $value); onde $object->$property = $value;
     class Dog{
 
         private $birth;
