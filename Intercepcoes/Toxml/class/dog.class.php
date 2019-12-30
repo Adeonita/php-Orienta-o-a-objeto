@@ -1,23 +1,15 @@
 <?php
-    class Dog{
-        private $name;
-        private $age;
-        private $raca;
+    include_once 'xmlBase.class.php';
 
-        public function __construct($name, $age, $raca){
+    class Dog extends XmlBase{
+        
+        public $name;
+        public $age;
+        public $breed;
+
+        public function __construct($name, $age, $breed){
             $this->name = $name;
             $this->age = $age;
             $this->breed = $breed;
-        }
-
-        public function toXml(){
-            return
-            "
-                <dog>
-                    <name> {$this->name} </name>
-                    <age> {$this->age} </age>
-                    <breed> {$this->raca} </breed>
-                </dog>
-            ";
         }
     }
