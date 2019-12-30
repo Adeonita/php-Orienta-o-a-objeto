@@ -10,6 +10,7 @@
         if(!$retorno = @file_get_contents($file)){
             die('Impossível ler o arquivo');
         }
+        return $retorno;
     }
     open(); //Erro 01
     open('teste'); //Erro 02
