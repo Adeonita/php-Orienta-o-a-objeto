@@ -16,7 +16,7 @@
                     return TRUE;
                 }
             }else{
-                throw new DUPLICATEDATABASE("O banco {$nameDb} já existe");
+                throw new DUPLICATEDATABASE("O banco ' {$nameDb} ' já existe");
                 return FALSE;
             }
         }
@@ -27,15 +27,17 @@
         } */
     }
 
-    
+    function insert($connection, $query){
+
+    }
 
     $connection = mysqli_connect('mysql', 'root', 'tiger');
     $nameDb = 'testando';
-    $query = "CREATE DATABASE {$nameDb}"; //or CREATE IF NOT EXIST DATABASE
+    $queryCreate = "CREATE DATABASE {$nameDb}"; //or CREATE IF NOT EXIST DATABASE
     $chek = mysqli_select_db($connection, $nameDb);  //Checa se um banco existe
 
    try{
-        createDataBase($connection, $query, $chek, $nameDb);
+        createDataBase($connection, $queryCreate, $chek, $nameDb);
     }catch(CONNECTIONERROR $exception){
         echo $exception->getMessage();
     }catch(DUPLICATEDATABASE $exception){
