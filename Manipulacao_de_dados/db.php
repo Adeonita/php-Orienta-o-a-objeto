@@ -6,7 +6,12 @@
  
     
    
-    function createDataBase($connection, $query, $chek, $nameDb){
+    function createDataBase($connection){
+
+        $nameDb = 'teste';
+        $query = "CREATE DATABASE {$nameDb}"; //or CREATE IF NOT EXIST DATABASE
+        $chek = mysqli_select_db($connection, $nameDb);  //Checa se um banco existe
+
         if(!$connection){
             throw new CONNECTIONERROR('Não é possível conectar-se ao banco'.mysqli_error());
         }else{
@@ -27,17 +32,27 @@
         } */
     }
 
+    function createTable($connection, $tableName, $arg1, $arg2){
+        if(!$connection){
+            throw new CONNECTIONERROR('Não é possível conectar-se ao banco'.mysqli_error());
+        }else{
+            $query = "CREATE TABLE {$tableName} ($arg1, $arg2)";
+        }
+
+    }
+
     function insert($connection, $query){
 
     }
 
-    $connection = mysqli_connect('mysql', 'root', 'tiger');
-    $nameDb = 'testando';
-    $queryCreate = "CREATE DATABASE {$nameDb}"; //or CREATE IF NOT EXIST DATABASE
-    $chek = mysqli_select_db($connection, $nameDb);  //Checa se um banco existe
+    $dbHost = 'mysql';
+    $dbUser = 'root';
+    $dbPassword = 'tiger';
+    $connection = mysqli_connect($dbHost, $dbUser,$dbPassword);
+    
 
    try{
-        createDataBase($connection, $queryCreate, $chek, $nameDb);
+        createDataBase($connection);
     }catch(CONNECTIONERROR $exception){
         echo $exception->getMessage();
     }catch(DUPLICATEDATABASE $exception){
