@@ -25,7 +25,7 @@
                     return TRUE;
                 }
             }else{
-                throw new DUPLICATEDATABASE("O banco ' {$nameDb} ' já existe");
+                //throw new DUPLICATEDATABASE("O banco ' {$nameDb} ' já existe");
                 return FALSE;
             }
         }
@@ -43,27 +43,40 @@
         }else{
             $query = "CREATE TABLE {$tableName} ($arg1, $arg2);";
             if(mysqli_query($connection, $query)){ //Se o banco existir, e se existir a conexão
-                echo "<br> A tabela {$tableName} foi criada com as colunas {$arg1}, {$arg2}";
+                echo "<br> A tabela {$tableName} foi criada com as colunas '{$arg1}', '{$arg2}'";
+                return TRUE;
             }else{
-                echo "<br>A tabela {$tableName} não foi criada";
+               // echo "<br>A tabela {$tableName} não foi criada";
+                return FALSE;
             }
         }
         mysqli_close($connection);
     }
 
-    function insert($connection, $query){
+    function insert($connection, $tableName){
+        if($connection){
+            $query = "INSERT INTO {$tableName} (nome, idade) VALUES ('Arthur', 0)";
+            mysqli_query($connection, $query);
+            //print('<br>Dados inseridos com sucesso! <br>');
+            mysqli_close($connection);
+            return TRUE;
+        }else{
+           // throw new CONNECTIONERROR('Não é possível conectar-se ao banco'.mysqli_error());
+            return FALSE;
+        }
 
     }
 
     $tableName = 'Tabela_Teste';
     $arg1 = 'nome VARCHAR (10)';
     $arg2 = 'idade VARCHAR (3)';
-    $nameDb = 'Testando42';
+    $nameDb = 'Testando';
     $chek = mysqli_select_db(getConnection(), $nameDb);  //Checa se um banco existe
 
    try{
         createDataBase(getConnection(), $nameDb, $chek);
         createTable(getConnection($nameDb), $tableName, $arg1, $arg2);
+        insert(getConnection($nameDb), $tableName);
     }catch(CONNECTIONERROR $exception){
         echo $exception->getMessage();
     }catch(DUPLICATEDATABASE $exception){
