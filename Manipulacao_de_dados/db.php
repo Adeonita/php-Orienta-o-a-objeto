@@ -64,8 +64,26 @@
            // throw new CONNECTIONERROR('Não é possível conectar-se ao banco'.mysqli_error());
             return FALSE;
         }
-
+        mysqli_close($connection);
     }
+
+    function showData($connection, $tableName){
+        if($connection){
+            $query = "SELECT nome, idade FROM {$tableName}";
+            $result = mysqli_query($connection, $query);
+            if($result){
+                    while($row = mysqli_fetch_assoc($result)){
+                    //print "{$row["nome"]}, {$row["idade"]} anos<br>";
+                    printf ("%s (%s)<br>", $row["nome"], $row["idade"]);
+
+                }
+            }else{
+                print mysqli_error();
+            }
+        }
+        mysqli_close($connection);
+    }
+
 
     $tableName = 'Tabela_Teste';
     $arg1 = 'nome VARCHAR (10)';
@@ -76,7 +94,8 @@
    try{
         createDataBase(getConnection(), $nameDb, $chek);
         createTable(getConnection($nameDb), $tableName, $arg1, $arg2);
-        insert(getConnection($nameDb), $tableName);
+       // insert(getConnection($nameDb), $tableName);
+        showData(getConnection($nameDb), $tableName);
     }catch(CONNECTIONERROR $exception){
         echo $exception->getMessage();
     }catch(DUPLICATEDATABASE $exception){
