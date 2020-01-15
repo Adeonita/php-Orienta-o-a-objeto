@@ -29,10 +29,10 @@
         private function transform($value){
             if(is_array($value)){
                 foreach($value as $x){
-                    if(is_integer($value)){
+                    if(is_integer($x)){
                         $foo[] = $x; //Se for inteiro adiciona direto no array foo
                     }else
-                        if(is_string($value)){
+                        if(is_string($x)){
                             $foo[] = "'$x'"; //Se for string acrescenta aspas e adiciona no array foo 
                         }
                 } 
