@@ -45,7 +45,11 @@
                     $result = "'$value'"; //Se for string acrescenta aspas
                 }
             else
-                if(is_null($valor)){
+                if(is_integer($value)){
+                    $result = $value; //atribui o próprio valor
+                }    
+            else
+                if(is_null($value)){
                     $result = 'NULL';  //atribui Nulo
                 }
             else
@@ -55,6 +59,7 @@
             else{
                 $result = $value; //atribui o próprio valor sem alterações
             }
+            //echo "\nresultado: ".is_bool($value);
             return $result; //Retorna a variavel result
         }
 
