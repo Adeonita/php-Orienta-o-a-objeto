@@ -60,7 +60,6 @@
     $p1->setAmount(10);
     $p1->setPrice(8.0);
 
-    print "Description: {$p1->getDescription()} <br>" . PHP_EOL;
-    print "Estoque: {$p1->getAmount()} <br>" . PHP_EOL;
-
+    print "\n\nDescription: {$p1->getDescription()} \n" . PHP_EOL;
+    print "Estoque: {$p1->getAmount()} \n" . PHP_EOL;
 ?>
