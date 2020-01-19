@@ -9,7 +9,7 @@ class Product{
     public $price;
     public $amount; //Quantidade
     public $code;
-    public $fornecedor;
+    public $fornecedor; //Um objeto como atributo de outro. Fornecedor como atributo de produto
 
     public function __construct($description, $price, $amount, $code, $fornecedor){
         $this->description = $description;
