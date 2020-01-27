@@ -12,6 +12,6 @@
         $dbPassword = 'tiger';    
         return mysqli_connect($dbHost, $dbUser,$dbPassword, $dataBase);
     }
-    print getType(getConnection());
+    //print getType(getConnection());
 
 ?>
