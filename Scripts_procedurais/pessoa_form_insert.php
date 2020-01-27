@@ -7,7 +7,8 @@
         <link href="css/form.css" rel="stylesheet" type="text/css" media="screen">
     </head>
     <body>
-        <form enctype="multipart/formdata" method="post" action="pessoa_save_insert.php">
+        <!--O action chama pra pessoa_Save_insert-->
+        <form enctype="multipart/formdata" method="post" action="pessoa_save_insert.php"> 
             <label> Código </label>
             <input  readonly="1" type="text" name="id" sytle="width: 30%">
             <label> Nome </label>
