@@ -7,6 +7,7 @@
         <link href="css/form.css" rel="stylesheet" type="text/css" media="screen">
     </head>
     <body>
+        <h1>Formulário de cadastro <br></h1>
         <!--O action chama pra pessoa_Save_insert-->
         <form enctype="multipart/formdata" method="post" action="pessoa_save_insert.php"> 
             <label> Código </label>
@@ -14,6 +15,8 @@
             <label> Nome </label>
             <input type="text" name="nome" sytle="width: 50%">
             <label> Endereço </label>
+            <input type="text" name="endereco" style="width: 25%">
+            <label> Bairro </label>
             <input type="text" name="bairro" style="width: 25%">
             <label> Telefone </label>
             <input type="text" name="telefone" style="width: 25%">
