@@ -1,23 +1,13 @@
 <?php
-
-    /**
-     *Função que retorna a conexão com o banco de dados
-     * @param database : é o banco de dados, que é passado como nulo pois é opcional
-     * @return mysqli_connection : Conexão com o banco de dados
-     **/ 
-    function getConnection(string $dataBase = null): object{
-        $dbHost = 'mysql';
-        $dbUser = 'root';
-        $dbPassword = 'tiger';    
-        return mysqli_connect($dbHost, $dbUser,$dbPassword, $dataBase);
-    }
+    require_once('getConnection.php');
+    
     
     /**
      * Função que cria um banco de dados, pegando a conexão e o nome do banco
      * @param connection: É a conexão com o banco
      * @param dataBase: Nome do banco de dados 
      */
-    function createDataBase(object $connection, string $dataBase):void{
+    function createDataBase( $connection, string $dataBase):void{
         $query = "CREATE DATABASE IF NOT EXISTS {$dataBase}";
         if($connection){
             mysqli_query($connection, $query);
@@ -32,7 +22,7 @@
      * @param connection: Conexão com o banco de dados
      * @param id: id da cidade s
      */
-    function lista_combo_cidades(object $connection, integer $id = null):string{
+    function lista_combo_cidades($connection, integer $id = null):string{
         $output = '';
         $query = 'SELECT id, nome FROM cidades';
         if($connection){
