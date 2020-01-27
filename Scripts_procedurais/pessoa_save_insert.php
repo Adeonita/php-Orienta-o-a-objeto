@@ -4,9 +4,10 @@
     function pessoa_save_insert($connection){
 
         $dados = $_POST;
-        $query = "SELECT max(id) as next FROM pessoas"; //
-        $result = mysqli_query($connection, $query);
-        $next = (int) mysqli_fetch_assoc($result)['next'] + 1;
+        $query = "SELECT max(id) as next FROM pessoas"; //Query para selecionar o próximo id da tabela pessoas
+        $result = mysqli_query($connection, $query); //query que retorna o próximo id
+        $next = (int) mysqli_fetch_assoc($result)['next'] + 1; // mysqli_fetch_assoc retorna a linha atual + 1
+        var_dump($next);
         $sql = "INSERT INTO pessoas
                                 (   
                                     id,
@@ -36,7 +37,22 @@
         }
 
         mysqli_close($connection);
+
+        
     }
+
 
     pessoa_save_insert(getConnection('sistema'));
 ?>
+
+<html>
+    <body>
+        <button onclick="window.location='pessoa_form_insert.php'">
+            + Inserir
+        </button>
+        <button onclick="window.location='pessoa_list.php'">
+            ... Listar
+        </button>
+        
+    </body>
+</html>
