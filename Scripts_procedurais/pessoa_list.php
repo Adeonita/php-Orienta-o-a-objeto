@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Listagem de Usuários</title>
+        <link rel="stylesheet" href="css/list.css" type="text/css" media="screen">
+    </head>
+    <body>
+        <?php
+            require_once('getConnection.php');
+            $query = 'SELECT * FROM pessoas ORDER BY id';
+            $connection = getConnection('sistema');
+            $result = mysqli_query($connection, $query);
+        ?>
+        <table border=1>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Neighborhood</th>
+                    <th>Phone</th>
+                </tr>
+            </thead> <!--Fim do cabeçalho da tabela-->
+            <tbody> <!--Inicio do corpo da tabela que será carregado do bd-->
+
+                <?php
+                    require_once('getConnection.php'); //Carrego o arquivo da conexão
+                    $query = 'SELECT * FROM pessoas ORDER BY id'; //Selecione todos os campos da tabela pessoa ordenados pelo id
+                    $result = mysqli_query(getConnection('sistema'), $query);
+                    //var_dump(mysqli_query(getConnection('sistema'), $query));
+                    while($row = mysqli_fetch_assoc($result)){  //Enquanto houver retorno da função mysqli_fetch_asscoc, que está sendo atribuida a linha
+                        $id = $row['id'];  //E atribuo o row['indice'] as variáveis correspondentes
+                        $nome = $row['nome'];
+                        $endereco = $row['endereco'];
+                        $bairro = $row['bairro'];
+                        $telefone = $row['telefone'];
+                        $email = $row['email'];
+                        $id_cidade = $row['id_cidade'];                    
+                ?>
+
+                <tr>
+                    <td align='center'>
+                        <a href="pessoa_form_edit.php?id="<?php $id; ?>">
+                            <img src="images.edit.sgv" style="width:17px">
+                        </a>
+                    </td>
+                    <td align='center'>
+                        <a href="pessoa_delet.php?id="<?php $id; ?>">
+                            <img src="images.remove.sgv" style="width:17px">
+                        </a>
+                    </td>.
+                    <!--Imprimo em tela todas as variáveis que foram capturadas no while-->
+                    <td> <?php echo $id; ?></td>  
+                    <td> <?php echo $nome; ?></td>
+                    <td> <?php echo $endereco; ?></td>
+                    <td> <?php echo $bairro; ?></td>
+                    <td> <?php echo $telefone; ?></td>
+                </tr>
+            <?php
+                } //Fim do while
+            ?>
+            </tbody>
+        </table>
+        <button onclick="window.location='pessoa_form_insert.php'">
+            + Inserir
+        </button>
+        <button onclick="window.location='pessoa_list.php'">
+            Atualizar
+        </button>
+    </body>
+</html>
