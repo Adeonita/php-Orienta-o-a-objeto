@@ -1,13 +1,23 @@
 <?php
 
-    function getConnection($dataBase = null){
+    /**
+     *Função que retorna a conexão com o banco de dados
+     * @param database : é o banco de dados, que é passado como nulo pois é opcional
+     * @return mysqli_connection : Conexão com o banco de dados
+     **/ 
+    function getConnection(string $dataBase = null): object{
         $dbHost = 'mysql';
         $dbUser = 'root';
         $dbPassword = 'tiger';    
         return mysqli_connect($dbHost, $dbUser,$dbPassword, $dataBase);
     }
     
-    function createDataBase($connection, $dataBase){
+    /**
+     * Função que cria um banco de dados, pegando a conexão e o nome do banco
+     * @param connection: É a conexão com o banco
+     * @param dataBase: Nome do banco de dados 
+     */
+    function createDataBase(object $connection, string $dataBase):void{
         $query = "CREATE DATABASE IF NOT EXISTS {$dataBase}";
         if($connection){
             mysqli_query($connection, $query);
@@ -17,7 +27,12 @@
         mysqli_close($connection);
     }
 
-    function lista_combo_cidades($connection, $id = null){
+    /**
+     * Função que seleciona e retorna uma string com o nome das cidades que estão cadastradas no banco de dados
+     * @param connection: Conexão com o banco de dados
+     * @param id: id da cidade s
+     */
+    function lista_combo_cidades(object $connection, integer $id = null):string{
         $output = '';
         $query = 'SELECT id, nome FROM cidades';
         if($connection){
@@ -41,5 +56,5 @@
     }
     
      #createDataBase(getConnection(), 'sistema');
-     echo lista_combo_cidades(getConnection('sistema'));
+     echo lista_combo_cidades(getConnection('sistema')); //chamo a função que exibe as cidades cadastradas e imprimo-a portanto no arquivo de inserção apenas dou um require
 ?>
