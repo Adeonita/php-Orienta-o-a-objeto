@@ -21,11 +21,10 @@
             <label> Cidade </label>
             <select name="id_cidade" style="width: 25%">
                 <?php
-                    require_once 'lista_combos_cidades()';
-                    print lista_combos_cidades();
+                    require_once 'lista_combo_cidades.php';
                 ?>
             </select>
-            <input type="submit">
+            <input type="submit" value="enviar">
         </form>
     </body>
 </html>
