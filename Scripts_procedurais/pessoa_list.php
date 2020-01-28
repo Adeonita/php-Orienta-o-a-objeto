@@ -42,7 +42,7 @@
 
                 <tr>
                     <td align='center'>
-                        <a href="pessoa_form_edit.php?id=<?php echo $id; ?>">
+                        <a href="pessoa_form_edit.php?id=<?php echo $id; ?>"> <!--Passagem do parâmetro id via get-->
                             <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/edit-user.png">
                         </a>
                     </td>
