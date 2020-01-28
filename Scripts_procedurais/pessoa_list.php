@@ -14,8 +14,8 @@
         <table border=1>
             <thead>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Address</th>
@@ -50,7 +50,7 @@
                         <a href="pessoa_delet.php?id="<?php $id; ?>">
                             <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/remove-user-male--v1.png">
                         </a>
-                    </td>.
+                    </td>
                     <!--Imprimo em tela todas as variáveis que foram capturadas no while-->
                     <td> <?php echo $id; ?></td>  
                     <td> <?php echo $nome; ?></td>
