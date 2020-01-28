@@ -43,12 +43,12 @@
                 <tr>
                     <td align='center'>
                         <a href="pessoa_form_edit.php?id="<?php $id; ?>">
-                            <img src="images.edit.sgv" style="width:17px">
+                            <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/edit-user.png">
                         </a>
                     </td>
                     <td align='center'>
                         <a href="pessoa_delet.php?id="<?php $id; ?>">
-                            <img src="images.remove.sgv" style="width:17px">
+                            <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/remove-user-male--v1.png">
                         </a>
                     </td>.
                     <!--Imprimo em tela todas as variáveis que foram capturadas no while-->
@@ -63,11 +63,13 @@
             ?>
             </tbody>
         </table>
-        <button onclick="window.location='pessoa_form_insert.php'">
-            + Inserir
-        </button>
-        <button onclick="window.location='pessoa_list.php'">
-            Atualizar
-        </button>
+        <div class="icons-person-list">
+            <button class="bg-collor-button-person-list" onclick="window.location='pessoa_form_insert.php'">
+                <img  class="padding-icon-div-list" src="https://img.icons8.com/windows/32/000000/add-user-male--v1.png">
+            </button>
+            <button class="bg-collor-button-person-list" onclick="window.location='pessoa_list.php'">
+                <img class="padding-icon-div-list"  src="https://img.icons8.com/ios-glyphs/30/000000/refresh.png">
+            </button>            
+        </div>
     </body>
 </html>
