@@ -42,12 +42,12 @@
 
                 <tr>
                     <td align='center'>
-                        <a href="pessoa_form_edit.php?id="<?php $id; ?>">
+                        <a href="pessoa_form_edit.php?id=<?php echo $id; ?>">
                             <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/edit-user.png">
                         </a>
                     </td>
                     <td align='center'>
-                        <a href="pessoa_delet.php?id="<?php $id; ?>">
+                        <a href="pessoa_delet.php?id=<?php echo $id; ?>">
                             <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/remove-user-male--v1.png">
                         </a>
                     </td>
