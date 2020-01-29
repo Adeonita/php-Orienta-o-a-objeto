@@ -83,7 +83,7 @@
         }
         mysqli_close($connection);
     }
-
+    
 
     $tableName = 'Tabela_Teste';
     $arg1 = 'nome VARCHAR (10)';
