@@ -10,13 +10,12 @@
             $connection = getConnection('sistema');
             //Checa se action está vazio e se é igual a delete, se for monta a query de delete do banco, se nao for ele lista os usuarios
             if( !empty($_GET['action']) AND ($_GET['action'] == 'delete')){ //se o campo action nao estiver vazio e seu valor for delete
-                print 'esse é o valor de $_get[id]';
-                var_dump($_GET['id']);
                 $id = (int) $_GET['id'];
-                print 'esse é o valor de $id';
-                var_dump($id);
                 $query = " DELETE FROM pessoas WHERE id='{$id}' " ; //Query que deleta
                 $result = mysqli_query($connection, $query);
+                if($result){
+                    print 'Deletado com sucesso';
+                }
             }
             $query = 'SELECT * FROM pessoas ORDER BY id'; //query que seleciona
             $result = mysqli_query($connection, $query);
@@ -37,7 +36,6 @@
             <tbody> <!--Inicio do corpo da tabela que será carregado do bd-->
 
                 <?php
-                    require_once('connection.php'); //Carrego o arquivo da conexão
                     $query = 'SELECT * FROM pessoas ORDER BY id'; //Selecione todos os campos da tabela pessoa ordenados pelo id
                     $result = mysqli_query(getConnection('sistema'), $query);
                     //var_dump(mysqli_query(getConnection('sistema'), $query));
@@ -53,12 +51,12 @@
 
                 <tr>
                     <td align='center'>
-                        <a href="pessoa_form_edit.php?action=edit&id=<?php echo $id; ?>"> <!--Passagem do parâmetro id via get-->
+                        <a href="pessoa_form.php?action=edit&id=<?php echo $id; ?>"> <!--Passagem do parâmetro id via get-->
                             <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/edit-user.png">
                         </a>
                     </td>
                     <td align='center'>
-                        <a href="pessoa_delete.php?action=delete&id=<?php echo $id; ?>">
+                        <a href="pessoa_list.php?action=delete&id=<?php echo $id; ?>">
                             <img class="padding-icon" src="https://img.icons8.com/windows/32/000000/remove-user-male--v1.png">
                         </a>
                     </td>

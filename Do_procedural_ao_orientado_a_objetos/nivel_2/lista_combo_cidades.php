@@ -46,5 +46,5 @@
     }
     
      #createDataBase(getConnection(), 'sistema');
-     echo lista_combo_cidades(connection('sistema')); //chamo a função que exibe as cidades cadastradas e imprimo-a portanto no arquivo de inserção apenas dou um require
+     echo lista_combo_cidades(getConnection('sistema')); //chamo a função que exibe as cidades cadastradas e imprimo-a portanto no arquivo de inserção apenas dou um require
 ?>
