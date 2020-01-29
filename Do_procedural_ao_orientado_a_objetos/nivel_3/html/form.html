@@ -8,9 +8,12 @@
         <title>Cadastro de usuarios</title>
     </head>
     <body>
-    <h1>Atualização dos dados cadastrais</h1>
-        <!--O action chama pra pessoa_update_insert-->
-        <form enctype="multipart/form-data" action="pessoa_form.php?action=save" method="post" >
+    <h1>Formulário de Cadastro</h1>
+    <!--O formulário sempre ira para pessoa_form.php com o action save
+        Este mesmo formulário é utilizado na edição, após clicar no botão de editar é realizada uma query que trás
+        todos os dados do usuário - através do id - onde ele os editará e ao clicar em enviar terá sua atualização 
+        acontecendo em PESSOA_FORM.PHP com o action save. onde a condição é existir um id para atualização dos dados -->
+        <form enctype="multipart/form-data" action="pessoa_form.php?action=save" method="post" >  
             <label> Código </label>
             <input  readonly="1" type="text" name="id" sytle="width: 30%" value="{id}">
             <label> Nome </label>
