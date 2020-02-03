@@ -1,0 +1,31 @@
+.padding-icon{
+    padding: 10px;
+}
+
+
+td{
+    text-align: center;
+    padding: 3px;
+}
+
+th{
+    text-align: center;
+    padding: 12px;
+}
+
+.bg-collor-button-person-list{
+    background-color: white;
+}
+
+.icons-person-list{
+    margin-left: 459px;
+    margin-top: 10px;
+}
+
+.padding-icon-div-list{
+    padding: 2px;
+}
+
+.icons-person-save-insert{
+    margin-left: 148px;
+}

@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Listagem de Usuários</title>
+        <link rel="stylesheet" href="../../css/list.css" type="text/css" media="screen">
+    </head>
+    <body>
+        <table border=1>
+            <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Neighborhood</th>
+                    <th>Phone</th>
+                </tr>
+            </thead> <!--Fim do cabeçalho da tabela-->
+            <tbody> <!--Inicio do corpo da tabela que será carregado do bd-->
+              {itens}
+            </tbody>
+        </table>
+            <button class="bg-collor-button-person-list" onclick="window.location='pessoa_form.php'">
+                <img  class="padding-icon-div-list" src="https://img.icons8.com/windows/32/000000/add-user-male--v1.png">
+            </button>
+    </body>
+</html>
