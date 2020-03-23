@@ -10,7 +10,7 @@
         }
 
         public function setDebug($bool){
-            $this->pm-> SMTPDebug = bool;
+            $this->pm->SMTPDebug = bool;
         }
 
         public function setFrom($from, $name){
