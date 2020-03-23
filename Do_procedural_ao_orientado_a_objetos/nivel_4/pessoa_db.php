@@ -57,8 +57,8 @@
                                 telefone = '{$person['telefone']}',
                                 email = '{$person['email']}',
                                 id_cidade = '{$person['id_cidade']}'
-                            WHERE id = '{$person['id']}'";
-        $result = ($connection, $query);
+                            WHERE id = '{$person['id']}' ";
+        $result = mysqli_query($connection, $query);
         mysqli_close($connection);
         return $result;
     }
