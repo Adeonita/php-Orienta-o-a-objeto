@@ -66,13 +66,21 @@
 
         require_once('../lista_combo_cidades.php');
         $form = file_get_contents('html/form.html');  //Abre o arquivo e retorna uma string
-        $atributos = ['id',' nome',' endereco', 'bairro', 'telefone', 'email', 'id_cidade'];
+        $atributos = ['id',' nome',' endereco', 'bairro', 'telefone', 'email', 'id_cidade', 'cidades'];
         foreach ($atributos as $atributo){
-            $form = str_replace($atributo, $pessoa[$atributo], $form);           
-        }
-        $form = str_replace('{cidades}', lista_combo_cidades($pessoa['id_cidade']), $form);           
+            if($atributo == 'cidades'){
+                $form = str_replace('{cidades}', lista_combo_cidades($pessoa['id_cidade']), $form);
+                print $form;
 
-        print $form;
+            }else{
+                $form = str_replace($atributo, $pessoa[$atributo], $form);     
+                print $form;
+      
+            }
+        }
+         
+
+       print $form;
 
     }
 
