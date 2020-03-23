@@ -14,7 +14,7 @@
                     $pessoa = $_POST; //Pego todos os dados que vieram via post e atribuo a variavel pessoa
                     if(empty($_POST['id'])){ //Se o id estiver vazio
                         $query = 'SELECT max(id) as next FROM pessoas'; //Seleciono o maior id da tabela pessoas e atribuo a next
-                        $result = mysqi_query($connection, $query);
+                        $result = mysqli_query($connection, $query);
                         $next = (int) mysqli_fetch_assoc($result)['next'] + 1; //Auto incremento manual do id
                         $sql = "INSERT INTO pessoas   /**Query de inserçao */
                                                 ( 
