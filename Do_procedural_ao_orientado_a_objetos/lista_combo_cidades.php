@@ -37,14 +37,13 @@
                   $output = $output . "<option {$chek} value='{$row['id']}'> {$row['nome']} </option>";
               }
           }
+          mysqli_close($connection);
         }else{
-            print 'Sem conexão';
+            return "Não há conexão";
         }
-
-        mysqli_close($connection);
         return $output;
     }
     
      #createDataBase(getConnection(), 'sistema');
-     echo lista_combo_cidades(getConnection('sistema')); //chamo a função que exibe as cidades cadastradas e imprimo-a portanto no arquivo de inserção apenas dou um require
+    lista_combo_cidades(getConnection('sistema')); //chamo a função que exibe as cidades cadastradas e imprimo-a portanto no arquivo de inserção apenas dou um require
 ?>
