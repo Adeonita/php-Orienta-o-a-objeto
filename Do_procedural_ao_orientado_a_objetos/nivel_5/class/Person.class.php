@@ -28,8 +28,8 @@ declare(strict_types=1);
                                         '{$person['email']}',
                                         '{$person['id_cidade']}'
                                 )";
-            }else{ //Se existir o id em person
-                $query = "UPDATE pessoas SET 
+            }else{ //Se existir o id em person atualizo esse usuário
+                $query = "UPDATE pessoas SET   
                                             nome = '{$person['nome']}',
                                             endereco = '{$person['endereco']}',
                                             bairro = '{$person['bairro']}',

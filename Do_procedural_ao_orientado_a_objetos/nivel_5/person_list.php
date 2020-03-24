@@ -8,7 +8,8 @@
         }
         //$person = Person::all();  // mostra todas as pessoas cadastradas
         //$person = Person::find(13); //Mostra person{id}
-        $person = Person::save();
+        $person = $_POST;
+        Person::save($person);
         //print_r ($person);
     }catch(Exception $e){
         print $e->getMessage();
