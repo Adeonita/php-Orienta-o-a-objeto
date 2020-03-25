@@ -60,11 +60,15 @@
         public static function showPerson(int $id){
             $conn = self::getConnection();
             $query = 'SELECT * FROM pessoas WHERE id = :id';
-            $result = $conn->prepare($query);
-            $result->query([
+            $statement = $conn->prepare($query);
+            $statement->execute([
                 ':id' => $id
             ]);
-            return $result->fetch();            
+            //$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+            return $result;    
         }
+
     }
 ?>
