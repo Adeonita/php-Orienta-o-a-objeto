@@ -13,7 +13,7 @@
             $this->dbName = $connection['dbname'];
             $this->username = $connection['username'];
             $this->password = $connection['password'];
-            $this->connection = $this->getConnection(); //atribui a propriedade 
+            $this->connection = $this->getConnection(); //atribui a propriedade connection a própria conexão, através da função getconnection
         }
 
         private function getConnection(){
@@ -30,14 +30,6 @@
                 //echo $e->getMessage(); //Exibe a excessão
                 echo("Can't open the database.");
             }
-        }
-
-
-        public function media($teste){
-            $result = function($a, $b){
-                return $a + $b;
-            };
-            return $result(5,3)/func_num_args($result);
         }
 
     }
