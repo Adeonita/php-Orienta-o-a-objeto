@@ -3,6 +3,9 @@
     require_once('traits/Connection.trait.php');
 
     class PersonForm {
+        /*Quando for utizar uma trait é preciso executar o seu método construtor na classe que a implementa
+        */
+
         use Connection{
             Connection::__construct as private __traitConstruct;
         }
@@ -13,10 +16,10 @@
 
 
         public function __construct(){
-            $this->__traitConstruct();
+            $this->__traitConstruct(); //chamada do construtor da trait
 
-           // $this->html = file_get_contents('../html/form.html'); //Carrega o formulário
-            $this->data = [
+            $this->html = file_get_contents('../html/form.html'); //Carrega o formulário
+            $this->data = [  //Inicializo os inputs do formulário para posterior substituição no método show
                 'id' => null,
                 'nome' => null,
                 'endereco' => null,
@@ -25,13 +28,24 @@
                 'email' => null,
                 'id_cidade' => null
             ];
-            $cities = '';
-            
+            $cidades = '';
+            $cities = new City();  //Instância da classe city
+            $cities = $cities->findAll();  //Chamada do método que trás todas as cidades com seu id
+            foreach($cities as $city){             //Percorro a variavel cities e 
+                $cidades = $cidades . "<option value='{$city['id']}'> {$city['nome']}</option>";  //A preencho com o html referente as options de um select
+            }
+            $this->html =  str_replace('{cidades}', $cidades, $this->html);  //Substituo a demarcação {cidades} do formulário pela variavel cidades
+                        
         }
 
         public function show(){
-            var_dump($this->connection);exit;
-            
+            foreach(array_keys($this->data) as $attribute){
+                $this->html = str_replace('{'.$attribute.'}', $this->data[$attribute], $this->html);
+            }
+            $this->html = str_replace("option value ='{$this->data['id_cidade']}'",
+                                      "option selected=1 value='{$this->data['id_cidade']}'",
+                                      $this->html );
+            print $this->html;
         }
         
         
