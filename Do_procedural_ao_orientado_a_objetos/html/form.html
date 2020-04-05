@@ -12,20 +12,20 @@
         <!--O action chama pra pessoa_update_insert-->
         <form enctype="multipart/form-data" action="pessoa_form.php?action=save" method="post" >
             <label> Código </label>
-            <input  readonly="1" type="text" name="id" sytle="width: 30%" value="<?php echo $id;?>">
+            <input  readonly="1" type="text" name="id" sytle="width: 30%" value="{id}">
             <label> Nome </label>
-            <input type="text" name="nome" sytle="width: 50%" value="<?php echo $nome;?>">
+            <input type="text" name="nome" sytle="width: 50%" value="{nome}">
             <label> Endereço </label>
-            <input type="text" name="endereco" style="width: 25%" value="<?php echo $endereco;?>">
+            <input type="text" name="endereco" style="width: 25%" value="{endereco}>">
             <label> Bairro </label>
-            <input type="text" name="bairro" style="width: 25%" value="<?php echo $bairro;?>">
+            <input type="text" name="bairro" style="width: 25%" value="{bairro}">
             <label> Telefone </label>
-            <input type="text" name="telefone" style="width: 25%" value="<?php echo $telefone;?>">
+            <input type="text" name="telefone" style="width: 25%" value="{telefone}">
             <label> Email </label>
-            <input type="text" name="email" style="width: 25%" value="<?php echo $email;?>">
+            <input type="text" name="email" style="width: 25%" value="{email}">
             <label> Cidade </label>
             <select name="id_cidade" style="width: 25%">
-                <option value="volvo">Volvo</option>
+                {cidades}
             </select>
             <input type="submit" value="enviar">
         </form>
