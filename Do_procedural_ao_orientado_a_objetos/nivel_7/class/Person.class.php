@@ -28,8 +28,12 @@
             return $result;
         }
 
+        public function save(){
+
+        }
+
         public function showAll(): void{
-            $persons = $this->personAll();
+            $persons = $this->findAll();
             $tableData = '';
             foreach($persons as $person){
                $tableData = $tableData . "<tr>
