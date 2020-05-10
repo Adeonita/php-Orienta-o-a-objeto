@@ -1,5 +1,6 @@
 <?php
     require_once('class/City.class.php');
+    require_once('class/Person.class.php');
     require_once('traits/Connection.trait.php');
 
     class Form {
@@ -35,6 +36,11 @@
             }
             $this->html =  str_replace('{cidades}', $cidades, $this->html);  //Substituo a demarcação {cidades} do formulário pela variavel cidades
         }
+
+        public function save($params){      
+            Person::save($params);
+        }
+
 
         public function show(): void{
             foreach(array_keys($this->data) as $attribute){

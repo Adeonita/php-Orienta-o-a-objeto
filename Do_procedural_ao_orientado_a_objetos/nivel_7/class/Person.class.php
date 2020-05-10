@@ -28,11 +28,23 @@
             return $result;
         }
 
-        public function save(){
-
+        /**
+         * @params params
+         */
+        public static function save($params){
+            $query = "INSERT INTO pessoas (id, nome, endereco, bairro, telefone, email) 
+                        values (NULL,
+                               {$params['nome']} 
+                               {$params['endereco']}
+                               {$params['bairro']}
+                               {$params['telefone']},
+                               {$params['email']})";
+            echo $query;
+            //$statment = $this->connection->prepare($query);
+            //$statment->execute();
         }
 
-        public function showAll(): void{
+        public function show(): void{
             $persons = $this->findAll();
             $tableData = '';
             foreach($persons as $person){
