@@ -1,18 +1,4 @@
 <?php
-/**
- require_once('class/Form.class.php');
- require_once('class/Person.class.php');
- require_once('class/City.class.php');
-
- 
-
- $person = new Person();
-// $person->showAll();
- $form = new Form();
- $form->show();
-
- $form = new City();
-*/
 
 spl_autoload_register(function($fileName){
     $path = "class/{$fileName}.class.php";
