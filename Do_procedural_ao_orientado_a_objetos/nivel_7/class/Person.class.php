@@ -36,41 +36,44 @@
         /**
          * @params params
          */
-        public function save($request){
-            if($this->connection){
-                if(empty($request['id'])){
-                    $query = 'INSERT INTO pessoas (id, nome, endereco, bairro, telefone, email) 
-                                values (:id,
-                                        :nome,
-                                        :endereco,
-                                        :bairro:
-                                        :telefone,
-                                        :email)';
-                    echo $query;            
-                }else{
-                    $query = 'UPDATE pessoas SET nome = :nome,
-                                                 endereco = :endereco,
-                                                 bairro =  :bairro,
-                                                 telefone = :telefone,
-                                                 email = :email
-                                     WHERE id = :id';
-                    echo $query;
+        public function save($person){
+            try{
+                if($this->connection){
+                    if(empty($person['id'])){  //Se não tiver id insere
+                        $result = $this->connection->query('SELECT max(id) as next FROM pessoas');
+                        $row = $result->fetch();
+                        $person['id'] = (int) $row['next']+1;
+                        $query = 'INSERT INTO pessoas (id, nome, endereco, bairro, telefone, email, id_cidade) 
+                                    values (:id,
+                                            :nome,
+                                            :endereco,
+                                            :bairro,
+                                            :telefone,
+                                            :email,
+                                            :id_cidade)';                            
+                    }else{ //Se tiver id atualiza
+                        $query = 'UPDATE pessoas SET nome = :nome,
+                                                     endereco = :endereco,
+                                                     bairro =  :bairro,
+                                                     telefone = :telefone,
+                                                     email = :email,
+                                                     id_cidade = :id_cidade
+                                         WHERE id = :id';
+                    }
                 }
-             }
-            
-            /*
-            $statment = $this->connection->prepare($query);
-            $statment->execute(
-                                ':id'           => NULL,
-                                ':nome'         => $params['nome'],
-                                ':endereco'     => $params['endereco'],
-                                ':bairro'       => $params['bairro'],
-                                ':telefone'     => $params['telefone'],
-                                ':email'        => $params['email']
-
-                            );
-
-            */
+                $statment = $this->connection->prepare($query);
+                $statment->execute([
+                                    ':id'           => $person['id'],
+                                    ':nome'         => $person['nome'],
+                                    ':endereco'     => $person['endereco'],
+                                    ':bairro'       => $person['bairro'],
+                                    ':telefone'     => $person['telefone'],
+                                    ':email'        => $person['email'],
+                                    ':id_cidade'    => $person['id_cidade']
+                                ]);
+            }catch(Exception $e){
+                print $e->getMessage();
+            } 
         }
 
         public function show(): void{
@@ -80,7 +83,7 @@
                 if($persons){ //Tratamento de erro para quando não há conexão
                     foreach($persons as $person){
                        $tableData = $tableData . "<tr>
-                                                    <td align='center'><a href='index.php?class=Person&method=save&id={$person['id']}'>Edit</a></td>
+                                                    <td align='center'><a href='index.php?class=Form&method=save&id={$person['id']}'>Edit</a></td>
                                                     <td><a href ='index.php?class=Person&method=delete&id={$person['id']}'>Del</a></td>
                                                     <td>{$person['id']}</td>
                                                     <td>{$person['nome']}</td> 
@@ -106,31 +109,6 @@
                 $result = $statment->fetch(PDO::FETCH_ASSOC); //Valores a serem atualizados
                 return;
             }print '<h1 style="'.$this->style.'">Alguem está perdido por aqui!</h1>';
-        }
-
-        //De fato atualizar os dadoss
-        public function update($data){
-            var_dump($data);
-        }
-
-        //Criar o formulário e pegar os dados para atualizar
-        private function getData($person){
-
-            $input = '';
-            foreach($person as $key => $value){
-                if($key != 'id'){
-                    $input .= "<label>{$key}</label>
-                               <input type='text' name={$value}sytle='width: 50%' value={$value}>
-                                ";
-                }
-            }
-            $form = 
-                '<form enctype="multipart/form-data" action="index.php?class=Person&method=update" method="post">'
-                    . $input .
-                    '<input type="submit" value="enviar">
-                </form>';
-                print $_REQUEST;
-            
         }
 
         public function delete($request){
