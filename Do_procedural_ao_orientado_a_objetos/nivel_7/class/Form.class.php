@@ -37,12 +37,10 @@
             $this->html =  str_replace('{cidades}', $cidades, $this->html);  //Substituo a demarcação {cidades} do formulário pela variavel cidades
         }
 
-        public function save($params){  
+        public function save($request){  
             $person = new Person();
-            $person->save($params);    
-            //Person::save($params);
+            $person->save($request);    
         }
-
 
         public function show(): void{
             foreach(array_keys($this->data) as $attribute){
